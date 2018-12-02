@@ -1,6 +1,6 @@
 from douyin.utils import fetch
 from douyin.config import hot_trend_url, common_headers
-from douyin.utils.tranform import data_to_music, data_to_topic
+from douyin.utils.transform import data_to_music, data_to_topic
 from douyin.structures.hot import HotTrend
 from douyin.utils.common import parse_datetime
 

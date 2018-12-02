@@ -15,17 +15,17 @@ downloader = douyin.downloaders.MusicDownloader([handler])
 # download musics
 downloader.download(musics)
 
-# HotVideo
+# get hot video result获取视频列表
 result = douyin.hot.video()
-# video objects
+# video objects拿到视频列表
 videos = result.data
-# print every video
+# print every video迭代视频列表
 for video in videos:
     print(video)
 
-# define handler and specify folder
+# define handler and specify folder定义为文件处理
 handler = douyin.handlers.FileHandler(folder='./videos')
-# define downloader
+# define downloader异步下载视频
 downloader = douyin.downloaders.VideoDownloader([handler])
-# download videos
+# download videos更新进度条
 downloader.download(videos)

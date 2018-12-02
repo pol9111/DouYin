@@ -2,7 +2,7 @@ from douyin.config import hot_music_url
 from douyin.structures import HotMusic
 from douyin.utils import fetch
 from douyin.utils.common import parse_datetime
-from douyin.utils.tranform import data_to_music
+from douyin.utils.transform import data_to_music
 
 
 def music():

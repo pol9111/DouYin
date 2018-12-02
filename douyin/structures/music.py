@@ -33,7 +33,7 @@ class Music(Base):
         """
         if max and not isinstance(max, int):
             raise RuntimeError('`max` param must be int')
-        from douyin.utils.tranform import data_to_video
+        from douyin.utils.transform import data_to_video
         query = {
             'device_id': '33333333',
             'music_id': self.id,

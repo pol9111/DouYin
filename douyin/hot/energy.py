@@ -2,7 +2,7 @@ from douyin.config import hot_energy_url
 from douyin.structures import HotEnergy
 from douyin.utils import fetch
 from douyin.utils.common import parse_datetime
-from douyin.utils.tranform import data_to_video
+from douyin.utils.transform import data_to_video
 
 
 def energy():

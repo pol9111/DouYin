@@ -1,7 +1,7 @@
 from douyin.config import hot_video_url
 from douyin.structures import HotVideo
 from douyin.utils import fetch
-from douyin.utils.tranform import data_to_video, parse_datetime
+from douyin.utils.transform import data_to_video, parse_datetime
 
 
 def video():

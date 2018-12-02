@@ -29,7 +29,7 @@ class Topic(Base):
         get videos of topic
         :return:
         """
-        from douyin.utils.tranform import data_to_video
+        from douyin.utils.transform import data_to_video
         if max and not isinstance(max, int):
             raise RuntimeError('`max` param must be int')
         query = {

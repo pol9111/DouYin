@@ -26,13 +26,13 @@ class FileHandler(Handler):
         :return:
         """
         print('Downloading', obj, '...')
-        kwargs.update({'ssl': False})
-        kwargs.update({'timeout': 10})
+        kwargs.update({'ssl': False}) # 设置不做证书认证
+        kwargs.update({'timeout': 10}) # 设置超时为10秒
         async with aiohttp.ClientSession() as session:
             async with session.get(obj.play_url, **kwargs) as response:
                 if response.status == 200:
-                    extension = mime_to_ext(response.headers.get('Content-Type'))
-                    full_path = join(self.folder, '%s.%s' % (obj.id, extension))
+                    extension = mime_to_ext(response.headers.get('Content-Type')) # 获取文件格式
+                    full_path = join(self.folder, '%s.%s' % (obj.id, extension)) # 路径+文件名+格式
                     with open(full_path, 'wb') as f:
                         f.write(await response.content.read())
                     print('Downloaded file to', full_path)

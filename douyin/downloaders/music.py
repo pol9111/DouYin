@@ -6,7 +6,7 @@ from douyin.downloaders import Downloader
 class MusicDownloader(Downloader):
     
     async def process_item(self, obj):
-        """
+        """使用异步开始下载音乐
         process item
         :param obj: single obj
         :return:
