@@ -30,7 +30,7 @@ class Topic(Base):
         :return:
         """
         from douyin.utils.transform import data_to_video
-        if max and not isinstance(max, int):
+        if max and not isinstance(max, int): # 如果max存在, 但不是int的话
             raise RuntimeError('`max` param must be int')
         query = {
             'device_id': '33333333',
@@ -43,12 +43,12 @@ class Topic(Base):
             # define cursor
             query['cursor'] = str(offset)
             result = fetch(topic2video_url, params=query, headers=common_headers, verify=False)
-            aweme_list = result.get('aweme_list', [])
+            aweme_list = result.get('aweme_list', []) # result是排行榜的json格式
             for item in aweme_list:
-                video = data_to_video(item)
+                video = data_to_video(item) # 把数据转换成视频对象
                 count += 1
                 yield video
-                if max and count >= max:
+                if max and count >= max: # 超过即返回
                     return
             # next page
             if result.get('has_more'):

@@ -5,7 +5,7 @@ from douyin.structures import Topic, Music
 video_file_handler = douyin.handlers.VideoFileHandler(folder='./videos')
 music_file_handler = douyin.handlers.MusicFileHandler(folder='./musics')
 # define mongodb handler
-mongo_handler = douyin.handlers.MongoHandler(conn_uri='localhost')
+mongo_handler = douyin.handlers.MongoHandler(conn_uri='mongodb://Bridi:anNBU7MD@localhost:27017/')
 # define downloader 下载热门音乐和话题, 并保存相关数据到mongo
 downloader = douyin.downloaders.VideoDownloader([mongo_handler, video_file_handler, music_file_handler])
 

@@ -2,7 +2,7 @@ import datetime
 from copy import deepcopy
 
 
-class Base():
+class Base(object):
     
     def json(self):
         """
@@ -22,4 +22,4 @@ class Base():
             # to string
             if isinstance(v, datetime.datetime):
                 d[k] = str(v)
-        return d
+        return d # 最后返回格式化好的数据, 存入mongoDB

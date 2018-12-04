@@ -14,16 +14,3 @@ def run():
 if __name__ == '__main__':
     run()
 
-class session:
-
-    def get(self, a=None, b=None):
-        print(a, b)
-
-
-def spider(**kwargs):
-    kwargs.update({'a': 1})
-    kwargs.update({'b': 2})
-    session.get(**kwargs)
-
-
-spider()
