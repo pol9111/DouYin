@@ -14,7 +14,7 @@ for result in douyin.hot.trend():
         # download videos of topic/music for 30 max per
         if isinstance(item, Topic):
             print('Item', item)
-            downloader.download(item.videos(max=30))
+            downloader.download(item.videos(max=5))
         if isinstance(item, Music):
             print('Item', item)
-            downloader.download(item.videos(max=30))
+            downloader.download(item.videos(max=2))

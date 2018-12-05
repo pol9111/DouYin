@@ -26,7 +26,7 @@ class Music(Base):
         """
         return '<Music: <%s, %s>>' % (self.id, self.name)
     
-    def videos(self, max=None):
+    def videos(self, max=None, **kwargs):
         """
         get videos of topic
         :return:
@@ -34,25 +34,33 @@ class Music(Base):
         if max and not isinstance(max, int):
             raise RuntimeError('`max` param must be int')
         from douyin.utils.transform import data_to_video
-        query = {
-            'device_id': '33333333',
-            'music_id': self.id,
-            'count': '18',
-        }
+        # query = {
+        #     'device_id': '33333333',
+        #     'music_id': self.id,
+        #     'count': '18',
+        # }
         offset, count = 0, 0
-        while True:
-            # define cursor
-            query['cursor'] = str(offset)
-            result = fetch(music2video_url, params=query, headers=common_headers, verify=False)
-            aweme_list = result.get('aweme_list', [])
-            for item in aweme_list:
-                video = data_to_video(item)
-                count += 1
-                yield video
-                if max and count >= max:
-                    return
+        kwargs.update({'params': {
+            'music_id': self.id,
+            'count': '20',
+
+        }})
+        # while True:
+        # define cursor
+        # kwargs['params'].update({
+        #     'cursor': str(offset),
+        # })
+        # query['cursor'] = str(offset)
+        result = fetch(music2video_url, **kwargs)
+        aweme_list = result.get('aweme_list', [])
+        for item in aweme_list:
+            video = data_to_video(item)
+            count += 1
+            yield video
+            if max and count >= max:
+                return
             # next page
-            if result.get('has_more'):
-                offset += 18
-            else:
-                break
+            # if result.get('has_more'):
+            #     offset += 20
+            # else:
+            #     break

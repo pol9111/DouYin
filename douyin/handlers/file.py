@@ -1,6 +1,8 @@
+import base64
 from os.path import join, exists
 from os import makedirs
 from douyin.handlers import Handler
+from douyin.utils.common import mix
 from douyin.utils.type import mime_to_ext
 import aiohttp
 

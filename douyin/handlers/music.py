@@ -1,5 +1,5 @@
 from douyin.handlers import FileHandler
-from douyin.structures import Music, Video
+from douyin.structures import Music
 
 
 class MusicFileHandler(FileHandler):
@@ -11,7 +11,8 @@ class MusicFileHandler(FileHandler):
         :param kwargs:
         :return:
         """
-        if isinstance(obj, Video):
-            obj = obj.music
-            if isinstance(obj, Music):
-                return await self._process(obj, **kwargs)
+        if isinstance(obj, Music):
+            kwargs.update({'headers': {
+                'User-Agent': 'stagefright/1.2 (Linux;Android 8.0.0)',
+            }})
+            return await self._process(obj, **kwargs)

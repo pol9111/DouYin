@@ -4,12 +4,13 @@ from douyin.utils import fetch
 from douyin.utils.transform import data_to_video, parse_datetime
 
 
-def video():
+def video(**kwargs):
     """
     get hot video result
     :return: HotVideo object
     """
-    result = fetch(hot_video_url)
+    kwargs.setdefault('params', {})
+    result = fetch(hot_video_url, **kwargs)
     # process json data
     datetime = parse_datetime(result.get('active_time'))
     video_list = result.get('aweme_list', []) # 如果没有默认返回空列表

@@ -1,3 +1,5 @@
+import random
+
 import dateparser
 
 
@@ -21,3 +23,13 @@ def first(array):
     if isinstance(array, list) and len(array) > 1:
         return array[0]
     return None
+
+
+def mix(x):
+    """mix params for request videos"""
+    character = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM<>./#:@()`^'
+    rst = ''
+    for _ in range(x):
+        tmp = random.choice(character)
+        rst += tmp
+    return rst

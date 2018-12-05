@@ -31,26 +31,26 @@ def fetch(url, **kwargs):
     kwargs.update({'headers': common_headers})
     now = int(time.time())
     num = random.randint(100, 800)
-    data = {
-        'ts': now,
-        '_rticket': str(now) + str(num),
-        'app_type': 'normal',
-        'app_name': 'aweme',
-        'js_sdk_version': '1.2.2',
-        'ac': 'wifi',
-        'os_version': '8.0.0',
-        'version_code': '310',
-        'version_name': '3.1.0',
-        'device_brand': 'samsung',
-        'device_platform': 'android',
-        'device_type': 'SM-G9500',
-        'resolution': '1440*2768',
-        'language': 'en',
-        'update_version_code': '3102'
-    }
-    response = requests.get(url, **kwargs, params=data)
+    kwargs['params'].update({
+            'ts': now,
+            '_rticket': str(now) + str(num),
+            'app_type': 'normal',
+            'app_name': 'aweme',
+            'js_sdk_version': '1.2.2',
+            'ac': 'wifi',
+            'os_version': '8.0.0',
+            'version_code': '310',
+            'version_name': '3.1.0',
+            'device_brand': 'samsung',
+            'device_platform': 'android',
+            'device_type': 'SM-G9500',
+            'resolution': '1440*2768',
+            'language': 'en',
+            'update_version_code': '3102'
+        })
+    response = requests.get(url, **kwargs)
     print(response)
-    print(response.json())
+    # print(response.json())
     # if response.status_code != 200:
     #     raise requests.ConnectionError('Expected status code 200, but got {}'.format(response.status_code))
     return response.json()
