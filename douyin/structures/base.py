@@ -15,10 +15,10 @@ class Base(object):
         # iterate every attribute
         for k, v in d.items():
             if not v:
-                continue
+                continue # 如果数据的值为空, 则跳过
             # recurrent call json method
             if isinstance(v, (Video, Music, User, Topic, Address)):
-                d[k] = v.json()
+                d[k] = v.json() # 如果数据的值是对象的话, 再次json
             # to string
             if isinstance(v, datetime.datetime):
                 d[k] = str(v)

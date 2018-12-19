@@ -13,6 +13,6 @@ class VideoDownloader(Downloader):
         """
         if isinstance(obj, Video): # 如果他是视频
             print('Processing', obj, '...')
-            for handler in self.handlers:
+            for handler in self.handlers: # 迭代添加的处理(下载或保存数据等等)
                 if isinstance(handler, Handler):
-                    await handler.process(obj) # 开始异步下载
+                    await handler.process(obj) # 使用handler对象所有的process处理
